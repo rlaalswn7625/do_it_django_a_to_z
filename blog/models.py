@@ -11,6 +11,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True) # 자동으로 수정 시각 저장
     updated_at = models.DateTimeField(auto_now=True)
     # 언젠가 작성자를 추후 만들거다
+    head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)
 
     def __str__(self):
         return f'[{self.pk}] {self.title}'
