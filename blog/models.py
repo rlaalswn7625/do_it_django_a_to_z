@@ -4,6 +4,7 @@ import os
 
 class Post(models.Model):
     title = models.CharField(max_length=30)
+    hook_text = models.CharField(max_length=100, blank=True)
     content = models.TextField() # textfield는 텍스트의 길이 제한이 없음
 
     # 게시글이 언제 만들어졌는지 확인해주는 것
