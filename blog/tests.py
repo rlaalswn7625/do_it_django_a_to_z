@@ -30,6 +30,7 @@ class TestView(TestCase):
         # 1.3 페이지 타이틀은 'Blog'이다
         soup = BeautifulSoup(response.content, 'html.parser')
         self.assertEqual(soup.title.text, 'Blog')
+
         self.navbar_test(soup)
 
         self.assertEqual(Post.objects.count(), 0)
