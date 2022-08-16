@@ -25,7 +25,7 @@
         <hr/>
         <div class="small text-muted">Posted on
             {{ p.created_at }} by
-            <a href="#">작성자명 쓸 위치</a>
+            <a href="#">{{ p.author | upper }}</a>
         </div>
         <p class="card-text">{{ p.content | truncatewords:20 }}</p>
         <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
