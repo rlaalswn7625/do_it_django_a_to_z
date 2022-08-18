@@ -5,11 +5,9 @@
 
 {% block main_area %}
         <div class="col-lg-12" id="post-area">
-            <!-- Post categories-->
-            {% if post.category %}
-                <a class="badge rounded-pill bg-warning text-dark float-end">{{ post.category }}</a>
-            {% else %}
-                <a class="badge rounded-pill bg-warning text-dark float-end">미분류</a>
+            {% if user.is_authenticated and user == post.author %}
+                <a type="button" href="/blog/update_post/{{ post.pk }}/" class="btn btn-outline-secondary btn-sm float-end">
+                <i class="fas fa-pen"></i>&nbsp;&nbsp; Edit Post</a>
             {% endif %}
             <!-- Post content-->
             <article>
@@ -21,10 +19,13 @@
                     <hr/>
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">Posted on {{ post.created_at }} &nbsp;&nbsp; by {{ post.author | upper }}
-                    {% if user.is_authenticated and user == post.author %}
-                        <a type="button" href="/blog/update_post/{{ post.pk }}/" class="btn btn-outline-secondary btn-sm float-end">
-                            <i class="fas fa-pen"></i>&nbsp;&nbsp; Edit Post</a>
+                    <!-- Post categories-->
+                    {% if post.category %}
+                        <a class="badge rounded-pill bg-warning text-dark float-end">{{ post.category }}</a>
+                    {% else %}
+                        <a class="badge rounded-pill bg-warning text-dark float-end">미분류</a>
                     {% endif %}
+
                     </div>
                     <hr/>
                 </header>
