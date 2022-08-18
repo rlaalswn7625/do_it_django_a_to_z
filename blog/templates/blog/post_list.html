@@ -50,7 +50,7 @@
             {{ p.created_at }} by
             <a href="#">{{ p.author | upper }}</a>
         </div>
-        <p class="card-text">{{ p.content | truncatewords:20 }}</p>
+        <p class="card-text">{{ p.get_content_markdown | truncatewords_html:20 | safe }}</p>
 
         {% if p.tags.exists %}
             <i class="fas fa-tags"></i>
